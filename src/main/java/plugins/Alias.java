@@ -1,8 +1,8 @@
 package plugins;
 
 import uk.co.benjiweber.benjibot.Settings;
-import uk.co.benjiweber.benjibot.plugininfra.CommandTwoParam;
-import uk.co.benjiweber.benjibot.plugininfra.EvaluatorTwoParam;
+import uk.co.benjiweber.benjibot.plugininfra.commands.CommandTwoParam;
+import uk.co.benjiweber.benjibot.plugininfra.commands.EvaluatorTwoParam;
 import uk.co.benjiweber.benjibot.plugininfra.filter.Filter;
 import uk.co.benjiweber.benjibot.plugininfra.filter.FilterBuilder;
 

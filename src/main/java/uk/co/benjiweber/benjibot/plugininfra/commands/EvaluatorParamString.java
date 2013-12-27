@@ -1,6 +1,8 @@
-package uk.co.benjiweber.benjibot.plugininfra;
+package uk.co.benjiweber.benjibot.plugininfra.commands;
 
 import com.google.common.base.Joiner;
+import uk.co.benjiweber.benjibot.plugininfra.Evaluator;
+import uk.co.benjiweber.benjibot.plugininfra.Triggerable;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.List;

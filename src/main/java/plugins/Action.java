@@ -1,6 +1,6 @@
 package plugins;
 
-import uk.co.benjiweber.benjibot.plugininfra.ActionOneParam;
+import uk.co.benjiweber.benjibot.plugininfra.commands.ActionOneParam;
 
 public class Action {
 

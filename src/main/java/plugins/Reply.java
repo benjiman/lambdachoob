@@ -1,6 +1,6 @@
 package plugins;
 
-import uk.co.benjiweber.benjibot.plugininfra.ReplyOneParam;
+import uk.co.benjiweber.benjibot.plugininfra.commands.ReplyOneParam;
 
 public class Reply {
 

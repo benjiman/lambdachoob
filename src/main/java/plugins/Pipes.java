@@ -1,7 +1,7 @@
 package plugins;
 
 import uk.co.benjiweber.benjibot.plugininfra.Evaluator;
-import uk.co.benjiweber.benjibot.plugininfra.EvaluatorParamString;
+import uk.co.benjiweber.benjibot.plugininfra.commands.EvaluatorParamString;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

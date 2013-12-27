@@ -1,6 +1,6 @@
 package plugins;
 
-import uk.co.benjiweber.benjibot.plugininfra.CommandOneParam;
+import uk.co.benjiweber.benjibot.plugininfra.commands.CommandOneParam;
 import uk.co.benjiweber.benjibot.plugininfra.filter.Filter;
 
 import static uk.co.benjiweber.benjibot.plugininfra.filter.FilterBuilder.match;

@@ -1,6 +1,7 @@
 package uk.co.benjiweber.benjibot.plugininfra.filter;
 
 import uk.co.benjiweber.benjibot.plugininfra.*;
+import uk.co.benjiweber.benjibot.plugininfra.commands.*;
 
 public class FilterBuilder {
     public static SpecifyTriggerable match(String filterRegex) {
