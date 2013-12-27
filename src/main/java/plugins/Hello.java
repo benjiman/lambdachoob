@@ -9,6 +9,6 @@ public class Hello {
 
     public final CommandOneParam hello = name -> "Hello, " + name;
 
-    public final Filter<CommandOneParam> lookForHellos = match("hello (\\w+)").then(name -> "hello, " + name);
+    public final Filter lookForHellos = match("hello (\\w+)").then(name -> "hello, " + name);
 
 }

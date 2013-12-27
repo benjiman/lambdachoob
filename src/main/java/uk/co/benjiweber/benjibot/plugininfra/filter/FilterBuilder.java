@@ -35,8 +35,8 @@ public class FilterBuilder {
 
     public interface SpecifyTriggerable<T extends MessageProcessor> {
         Filter<Command> then(Command triggerable);
-        Filter<Command> then(CommandOneParam triggerable);
-        Filter<Command> then(CommandTwoParam triggerable);
+        Filter<CommandOneParam> then(CommandOneParam triggerable);
+        Filter<CommandTwoParam> then(CommandTwoParam triggerable);
         Filter<Reply> thenReply(Reply triggerable);
         Filter<Action> thenAction(Action triggerable);
         Filter<Command> then(EvaluatorTwoParam evaluatorTwoParam);

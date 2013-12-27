@@ -21,6 +21,7 @@ public class PluginScanner {
                 .collect(Collectors.toMap(Map.Entry::getKey, entry -> entry.getValue().map(field -> getValue(field, plugin, Triggerable.class)).orElse(null)));
     }
 
+    @SuppressWarnings("unchecked")
     private static <T> T getValue(Field field, Object plugin, Class<T> expectedType) {
         try {
             return (T) field.get(plugin);
