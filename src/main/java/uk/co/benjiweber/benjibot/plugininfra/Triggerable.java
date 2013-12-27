@@ -6,7 +6,7 @@ import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.Optional;
 
-public interface Triggerable {
+public interface Triggerable extends MessageProcessor {
     default Optional<String> command(Arguments arguments) {
         return Optional.empty();
     }

@@ -1,6 +1,9 @@
 package uk.co.benjiweber.benjibot.utils;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import uk.co.benjiweber.benjibot.Settings;
+import uk.co.benjiweber.benjibot.plugininfra.filter.Filter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,6 +11,7 @@ import java.util.Optional;
 
 public class Arguments {
 
+    private final String raw;
     private final Optional<String> pluginName;
     private final Optional<String> commandName;
     private final Optional<String> arg1;
@@ -15,10 +19,12 @@ public class Arguments {
     private final Optional<String> arg3;
     private final List<String> args;
 
-    public Arguments(String[] parts) {
-        Optional<String> pluginCommand = Optionals.flatten(ifHas(parts, 0).map(part -> part.contains(".") ? Optional.of(part) : Optional.<String>empty()));
-        this.pluginName = pluginCommand.map(plugin -> plugin.replaceAll("\\..*",""));
-        this.commandName = pluginCommand.map(plugin -> plugin.replaceAll(".*?\\.",""));
+    public Arguments(String message) {
+        this.raw = message;
+        String[] parts = message.split(" ");
+        Optional<String> pluginCommand = Optionals.flatten(ifHas(parts, 0).map(part -> validCommand(part) ? Optional.of(part) : Optional.<String>empty()));
+        this.pluginName = pluginCommand.map(plugin -> plugin.substring(1).replaceAll("\\..*",""));
+        this.commandName = pluginCommand.map(plugin -> plugin.substring(1).replaceAll(".*?\\.", ""));
         this.arg1 = ifHas(parts,1);
         this.arg2 = ifHas(parts,2);
         this.arg3 = ifHas(parts,3);
@@ -28,13 +34,26 @@ public class Arguments {
                 .subList(1, parts.length);
     }
 
+    private boolean validCommand(String part) {
+        return part.contains(".") && part.startsWith(Settings.Trigger);
+    }
+
+    public Arguments(Filter filter, String raw, String... parts) {
+        this.raw = raw;
+        this.pluginName = Optional.empty();
+        this.commandName = Optional.of(filter.getRegex());
+        this.arg1 = ifHas(parts, 0);
+        this.arg2 = ifHas(parts, 1);
+        this.arg3 = ifHas(parts, 2);
+        this.args = Arrays.asList(parts);
+    }
+
     private static <T> Optional<T> ifHas(T[] arr, int i) {
         return arr.length > i ? Optional.of(arr[i]) : Optional.<T>empty();
     }
 
     public static Arguments fromString(String message) {
-        String[] parts = message.split(" ");
-        return new Arguments(parts);
+        return new Arguments(message);
     }
 
     public Optional<String> getCommandName() {
@@ -61,4 +80,7 @@ public class Arguments {
         return args;
     }
 
+    public String getRaw() {
+        return raw;
+    }
 }
