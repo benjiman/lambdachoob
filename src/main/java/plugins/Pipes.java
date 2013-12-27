@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 public class Pipes {
 
     public final EvaluatorParamString eval = (evaluator, argString) -> {
-        return evaluate(evaluator, argString, ""); ding
+        return evaluate(evaluator, argString, "");
     };
 
     private static final Pattern pipesPattern = Pattern.compile("(.*?) *?(\\||$) *(.*)");
