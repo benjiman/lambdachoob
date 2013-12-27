@@ -13,7 +13,7 @@ public class Settings {
             .setName(LambdaChoob.class.getSimpleName())
             .setLogin(LambdaChoob.class.getSimpleName())
             .setRealName(LambdaChoob.class.getSimpleName())
-            .addAutoJoinChannel("#benjibot")
+            .addAutoJoinChannel("#" + LambdaChoob.class.getSimpleName())
             .setServerHostname("irc.uwcs.co.uk")
             .addListener(new PluginManager()
                     .addPlugin(new Hello())
