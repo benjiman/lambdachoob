@@ -14,7 +14,7 @@ public class Evaluator {
     }
 
     public String evaluate(String newMessage) {
-        return pluginManager.processMessage(clone(msg, newMessage)).stream().map(response -> response.toString()).reduce("", (a,b) -> a + " " + b);
+        return pluginManager.processMessage(clone(msg, newMessage)).stream().map(response -> response.toString()).reduce("", (a,b) -> a + " " + b).trim();
     }
 
     private MessageEvent<BenjiBot> clone(MessageEvent<BenjiBot> messageEvent, String newCommand) {

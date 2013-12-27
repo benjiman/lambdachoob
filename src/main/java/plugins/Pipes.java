@@ -1,8 +1,6 @@
 package plugins;
 
-import com.google.common.base.Joiner;
 import uk.co.benjiweber.benjibot.plugininfra.Evaluator;
-import uk.co.benjiweber.benjibot.plugininfra.EvaluatorParamList;
 import uk.co.benjiweber.benjibot.plugininfra.EvaluatorParamString;
 
 import java.util.regex.Matcher;
