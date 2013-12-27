@@ -2,14 +2,14 @@ package uk.co.benjiweber.benjibot.plugininfra.responses;
 
 import org.pircbotx.hooks.events.MessageEvent;
 import org.pircbotx.output.OutputIRC;
-import uk.co.benjiweber.benjibot.BenjiBot;
+import uk.co.benjiweber.benjibot.LambdaChoob;
 
 import java.util.Optional;
 
 public class Reply extends AbstractResponse {
-    private final MessageEvent<BenjiBot> request;
+    private final MessageEvent<LambdaChoob> request;
 
-    public Reply(MessageEvent<BenjiBot> request, Optional<String> message) {
+    public Reply(MessageEvent<LambdaChoob> request, Optional<String> message) {
         super(message);
         this.request = request;
     }

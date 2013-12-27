@@ -1,7 +1,7 @@
 package uk.co.benjiweber.benjibot.plugininfra;
 
 import org.pircbotx.hooks.events.MessageEvent;
-import uk.co.benjiweber.benjibot.BenjiBot;
+import uk.co.benjiweber.benjibot.LambdaChoob;
 import uk.co.benjiweber.benjibot.plugininfra.filter.Filter;
 import uk.co.benjiweber.benjibot.plugininfra.responses.Response;
 import uk.co.benjiweber.benjibot.utils.Arguments;
@@ -21,7 +21,7 @@ public class PluginWrapper {
         this.filters = PluginScanner.findFilters(plugin);
     }
 
-    public List<Response> onMessage(MessageEvent<BenjiBot> event) {
+    public List<Response> onMessage(MessageEvent<LambdaChoob> event) {
         Arguments arguments = new Arguments(pluginManager, event);
         List<Response> responses = new ArrayList<>();
 

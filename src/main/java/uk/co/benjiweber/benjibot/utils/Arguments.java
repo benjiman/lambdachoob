@@ -1,10 +1,9 @@
 package uk.co.benjiweber.benjibot.utils;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.pircbotx.hooks.events.MessageEvent;
-import uk.co.benjiweber.benjibot.BenjiBot;
+import uk.co.benjiweber.benjibot.LambdaChoob;
 import uk.co.benjiweber.benjibot.Settings;
 import uk.co.benjiweber.benjibot.plugininfra.PluginManager;
 
@@ -15,13 +14,13 @@ import java.util.Optional;
 public class Arguments {
 
     private final PluginManager pluginManager;
-    private final MessageEvent<BenjiBot> message;
+    private final MessageEvent<LambdaChoob> message;
     private final String raw;
     private final Optional<String> pluginName;
     private final Optional<String> commandName;
     private final List<String> args;
 
-    public Arguments(PluginManager pluginManager, MessageEvent<BenjiBot> message) {
+    public Arguments(PluginManager pluginManager, MessageEvent<LambdaChoob> message) {
         this(message.getMessage(), pluginManager, message);
     }
 
@@ -29,7 +28,7 @@ public class Arguments {
         this(raw, null, null);
     }
 
-    private Arguments(String raw, PluginManager pluginManager, MessageEvent<BenjiBot> message) {
+    private Arguments(String raw, PluginManager pluginManager, MessageEvent<LambdaChoob> message) {
         this.raw = raw;
         String[] parts = raw.split(" ");
         this.pluginManager = pluginManager;
@@ -91,7 +90,7 @@ public class Arguments {
         return pluginManager;
     }
 
-    public MessageEvent<BenjiBot> getMessage() {
+    public MessageEvent<LambdaChoob> getMessage() {
         return message;
     }
 
