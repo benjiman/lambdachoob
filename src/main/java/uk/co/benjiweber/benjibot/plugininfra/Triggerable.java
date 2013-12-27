@@ -1,8 +1,7 @@
 package uk.co.benjiweber.benjibot.plugininfra;
 
-import org.pircbotx.PircBotX;
-import org.pircbotx.hooks.events.MessageEvent;
-import uk.co.benjiweber.benjibot.BenjiBot;
+import uk.co.benjiweber.benjibot.plugininfra.responses.Message;
+import uk.co.benjiweber.benjibot.plugininfra.responses.Response;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.Optional;
@@ -12,7 +11,7 @@ public interface Triggerable extends MessageProcessor {
         return Optional.empty();
     }
 
-    default void process(Arguments arguments, Responder responder) {
-        command(arguments).ifPresent(responder::message);
+    default Response process(Arguments arguments) {
+        return new Message(command(arguments));
     }
 }

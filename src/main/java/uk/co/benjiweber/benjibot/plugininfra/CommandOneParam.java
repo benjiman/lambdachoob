@@ -3,7 +3,6 @@ package uk.co.benjiweber.benjibot.plugininfra;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public interface CommandOneParam extends Triggerable {
     public String command(String arg);

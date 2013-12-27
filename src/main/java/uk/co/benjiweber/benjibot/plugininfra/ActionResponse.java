@@ -1,9 +1,11 @@
 package uk.co.benjiweber.benjibot.plugininfra;
 
+import uk.co.benjiweber.benjibot.plugininfra.responses.Action;
+import uk.co.benjiweber.benjibot.plugininfra.responses.Response;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 public interface ActionResponse extends Triggerable {
-    default void process(Arguments arguments, Responder responder) {
-        command(arguments).ifPresent(responder::action);
+    default Response process(Arguments arguments) {
+        return new Action(command(arguments));
     }
 }

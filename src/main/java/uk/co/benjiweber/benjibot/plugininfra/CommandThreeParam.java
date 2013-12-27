@@ -4,7 +4,6 @@ import uk.co.benjiweber.benjibot.utils.Arguments;
 import uk.co.benjiweber.benjibot.utils.Optionals;
 
 import java.util.Optional;
-import java.util.function.BiFunction;
 
 public interface CommandThreeParam extends Triggerable {
     public String command(String arg1, String arg2, String arg3);

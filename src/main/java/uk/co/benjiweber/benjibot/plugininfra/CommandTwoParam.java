@@ -4,8 +4,6 @@ import uk.co.benjiweber.benjibot.utils.Arguments;
 import uk.co.benjiweber.benjibot.utils.Optionals;
 
 import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public interface CommandTwoParam extends Triggerable {
     public String command(String arg1, String arg2);

@@ -26,8 +26,8 @@ public class FilterBuilder {
             }
 
             @Override
-            public Filter<DispatchTwoParam> thenDispatch(DispatchTwoParam triggerable) {
-                return Filter.from(filterRegex, triggerable);
+            public Filter<EvaluatorTwoParam> then(EvaluatorTwoParam evaluatorTwoParam) {
+                return Filter.from(filterRegex, evaluatorTwoParam);
             }
         };
     }
@@ -38,6 +38,6 @@ public class FilterBuilder {
         Filter<Command> then(CommandTwoParam triggerable);
         Filter<Reply> thenReply(Reply triggerable);
         Filter<Action> thenAction(Action triggerable);
-        Filter<Action> thenDispatch(DispatchTwoParam triggerable);
+        Filter<Command> then(EvaluatorTwoParam evaluatorTwoParam);
     }
 }

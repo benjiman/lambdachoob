@@ -1,12 +1,13 @@
 package uk.co.benjiweber.benjibot.plugininfra.filter;
 
 import uk.co.benjiweber.benjibot.plugininfra.MessageProcessor;
-import uk.co.benjiweber.benjibot.plugininfra.Responder;
-import uk.co.benjiweber.benjibot.plugininfra.Triggerable;
+import uk.co.benjiweber.benjibot.plugininfra.responses.Message;
+import uk.co.benjiweber.benjibot.plugininfra.responses.Response;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,11 +20,12 @@ public class Filter<T extends MessageProcessor> implements MessageProcessor {
         this.triggerable = triggerable;
     }
 
-    public void process(Arguments arguments, Responder responder) {
+    public Response process(Arguments arguments) {
         Matcher matcher = filterRegex.matcher(arguments.getRaw());
         if (matcher.matches()) {
-            triggerable.process(newArgs(arguments, matcher), responder);
+            return triggerable.process(newArgs(arguments, matcher));
         }
+        return new Message(Optional.<String>empty());
     }
 
     private Arguments newArgs(Arguments arguments, Matcher matcher) {
@@ -31,7 +33,7 @@ public class Filter<T extends MessageProcessor> implements MessageProcessor {
         for (int i = 1; i <= matcher.groupCount(); i++) {
             args.add(matcher.group(i));
         }
-        return new Arguments(this, arguments.getRaw(), args.toArray(new String[0]));
+        return new Arguments(arguments, arguments.getRaw(), args.toArray(new String[0]));
     }
 
     public static <T extends MessageProcessor> Filter<T> from(String filterRegex, T triggerable) {
