@@ -8,6 +8,6 @@ public interface CommandOneParam extends Triggerable {
     public String command(String arg);
 
     public default Optional<String> command(Arguments arguments) {
-        return arguments.getArg1().map(arg1 -> this.command(arg1));
+        return arguments.argsFrom(1).map(arg1 -> this.command(arg1));
     }
 }

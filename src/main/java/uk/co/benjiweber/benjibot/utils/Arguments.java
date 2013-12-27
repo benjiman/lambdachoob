@@ -1,5 +1,6 @@
 package uk.co.benjiweber.benjibot.utils;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import org.pircbotx.hooks.events.MessageEvent;
 import uk.co.benjiweber.benjibot.BenjiBot;
@@ -17,9 +18,6 @@ public class Arguments {
     private final String raw;
     private final Optional<String> pluginName;
     private final Optional<String> commandName;
-    private final Optional<String> arg1;
-    private final Optional<String> arg2;
-    private final Optional<String> arg3;
     private final List<String> args;
 
     public Arguments(PluginManager pluginManager, MessageEvent<BenjiBot> message) {
@@ -30,9 +28,6 @@ public class Arguments {
         Optional<String> pluginCommand = Optionals.flatten(ifHas(parts, 0).map(part -> validCommand(part) ? Optional.of(part) : Optional.<String>empty()));
         this.pluginName = pluginCommand.map(plugin -> plugin.substring(1).replaceAll("\\..*",""));
         this.commandName = pluginCommand.map(plugin -> plugin.substring(1).replaceAll(".*?\\.", ""));
-        this.arg1 = ifHas(parts,1);
-        this.arg2 = ifHas(parts,2);
-        this.arg3 = ifHas(parts,3);
         args = parts.length < 2
             ? Lists.<String>newArrayList()
             : Arrays.asList(parts)
@@ -43,9 +38,6 @@ public class Arguments {
         this.raw = raw;
         this.pluginName = Optional.empty();
         this.commandName = Optional.of("" + raw.hashCode());
-        this.arg1 = ifHas(parts, 0);
-        this.arg2 = ifHas(parts, 1);
-        this.arg3 = ifHas(parts, 2);
         this.args = Arrays.asList(parts);
         this.pluginManager = other.pluginManager;
         this.message = other.message;
@@ -59,24 +51,24 @@ public class Arguments {
         return arr.length > i ? Optional.of(arr[i]) : Optional.<T>empty();
     }
 
+    public Optional<String> arg(int i) {
+        return args.size() >= i ? Optional.of(args.get(i - 1)) : Optional.<String>empty();
+    }
+
+    public Optional<String> argsFrom(int i) {
+        if (args.size() >= i) {
+            return Optional.of(Joiner.on(" ").join(args.subList(i - 1, args.size())));
+        } else {
+            return Optional.<String>empty();
+        }
+    }
+
     public Optional<String> getCommandName() {
         return commandName;
     }
 
     public Optional<String> getPluginName() {
         return pluginName;
-    }
-
-    public Optional<String> getArg1() {
-        return arg1;
-    }
-
-    public Optional<String> getArg2() {
-        return arg2;
-    }
-
-    public Optional<String> getArg3() {
-        return arg3;
     }
 
     public List<String> getArgs() {

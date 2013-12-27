@@ -10,6 +10,6 @@ public interface EvaluatorTwoParam extends Triggerable {
 
     public default Optional<String> command(Arguments arguments) {
         Evaluator evaluator = new Evaluator(arguments.getMessage(), arguments.getPluginManager());
-        return Optionals.flatten(arguments.getArg1().map(arg1 -> arguments.getArg2().map(arg2 -> command(evaluator, arg1, arg2))));
+        return Optionals.flatten(arguments.arg(1).map(arg1 -> arguments.argsFrom(2).map(arg2 -> command(evaluator, arg1, arg2))));
     }
 }

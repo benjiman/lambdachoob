@@ -26,7 +26,6 @@ public class PluginWrapper {
         List<Response> responses = new ArrayList<>();
 
         if (arguments.getPluginName().orElse("").equalsIgnoreCase(plugin.getClass().getSimpleName())) {
-            System.out.println("Processing " );
             Optional<Triggerable> command = arguments.getCommandName().map(commands::get);
             command.ifPresent(cmd -> {responses.add(cmd.process(arguments));});
         }

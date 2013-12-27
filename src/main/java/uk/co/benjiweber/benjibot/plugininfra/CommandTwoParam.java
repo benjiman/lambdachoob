@@ -9,6 +9,6 @@ public interface CommandTwoParam extends Triggerable {
     public String command(String arg1, String arg2);
 
     public default Optional<String> command(Arguments arguments) {
-        return Optionals.flatten(arguments.getArg1().map(arg1 -> arguments.getArg2().map(arg2 -> command(arg1, arg2))));
+        return Optionals.flatten(arguments.arg(1).map(arg1 -> arguments.argsFrom(2).map(arg2 -> command(arg1, arg2))));
     }
 }
