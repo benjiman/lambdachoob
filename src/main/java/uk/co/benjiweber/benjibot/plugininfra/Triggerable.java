@@ -2,6 +2,7 @@ package uk.co.benjiweber.benjibot.plugininfra;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.events.MessageEvent;
+import uk.co.benjiweber.benjibot.BenjiBot;
 import uk.co.benjiweber.benjibot.utils.Arguments;
 
 import java.util.Optional;

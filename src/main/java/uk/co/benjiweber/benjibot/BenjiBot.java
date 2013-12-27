@@ -4,6 +4,7 @@ import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.exception.IrcException;
 import plugins.Action;
+import plugins.Alias;
 import plugins.Hello;
 import plugins.Reply;
 import uk.co.benjiweber.benjibot.plugininfra.LambdaListenerAdapter;
@@ -22,6 +23,7 @@ public class BenjiBot {
                 .addListener(new LambdaListenerAdapter(new Hello()))
                 .addListener(new LambdaListenerAdapter(new Reply()))
                 .addListener(new LambdaListenerAdapter(new Action()))
+                .addListener(new LambdaListenerAdapter(new Alias()))
                 .buildConfiguration()
         );
         bot.startBot();
